@@ -3,11 +3,26 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
   return (
-      <div>
+      <nav className='nav'>
 
-      <Link key="home" to={'/'}>Home</Link>
-      <Link key="transfer" to={'/transfer'}>Transfer</Link>
-      <Link key="transactions" to={'/transactions'}>Transactions</Link>
-      </div>
+        <div className="logo">
+
+          <h1>
+
+            BankFrame
+
+          </h1>
+
+        </div>
+
+        <div className="links">
+
+          <Link to="/">Home</Link>
+          <Link key="transfer" to={'/transfer'}>Transfer</Link>
+          <Link key="transactions" to={'/transactions'}>Transactions</Link>
+          
+        </div>
+
+      </nav>
   )
 }

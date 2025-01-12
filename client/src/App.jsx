@@ -8,6 +8,8 @@ import Home from './pages/Home'
 import Transfer from './pages/Transfer'
 import Transactions from './pages/Transactions'
 
+import './assets/styles/styles.css'
+
 function App() {
 
   return (
@@ -16,16 +18,21 @@ function App() {
       <BrowserRouter>
 
         <Header/>
-      
-        <Routes>
+    
+        <div className="content">
 
-          <Route path="/" element={<Home />} />
+          <Routes>
 
-          <Route path="/transfer" element={<Transfer />} />
+            <Route path="/" element={<Home />} />
 
-          <Route path="/transactions" element={<Transactions />} />
+            <Route path="/transfer" element={<Transfer />} />
 
-        </Routes>
+            <Route path="/transactions" element={<Transactions />} />
+
+          </Routes>
+
+
+        </div>
 
         <Footer/>
       
