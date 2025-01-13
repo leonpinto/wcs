@@ -55,4 +55,64 @@ footer {
 footer h1 {
   font-size: 1.5rem;
   font-weight: 400;
+}
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.transactions .header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.transactions .header h1 {
+  font-size: 2.5rem;
+  color: #444;
+}
+.transactions .content .balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 3rem;
+}
+.transactions .content .balance h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+.transactions .content .history h2 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+.transactions .content .history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.transactions .content .history table th, .transactions .content .history table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+.transactions .content .history table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  color: #555;
+}
+.transactions .content .history table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.transactions .content .history table tr:hover {
+  background-color: #f1f1f1;
+}
+.transactions .content .history table td {
+  font-size: 1rem;
+  color: #333;
 }/*# sourceMappingURL=styles.css.map */
