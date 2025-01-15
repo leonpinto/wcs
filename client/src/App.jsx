@@ -7,6 +7,7 @@ import Footer from './partials/Footer'
 import Home from './pages/Home'
 import Transfer from './pages/Transfer'
 import Transactions from './pages/Transactions'
+import AddAccount from './pages/AddAccount';
 
 import './assets/styles/styles.css'
 
@@ -28,7 +29,7 @@ function App() {
             <Route path="/transfer" element={<Transfer />} />
 
             <Route path="/transactions" element={<Transactions />} />
-
+            <Route path = "/add-account" element = {<AddAccount />} />
           </Routes>
 
 
