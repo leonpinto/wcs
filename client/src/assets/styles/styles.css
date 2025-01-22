@@ -8,6 +8,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
 }
 
 .content {
@@ -16,35 +17,59 @@ body {
 
 .nav {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-height: 10vh;
-  padding: 1rem;
-}
-.nav .logo h1 {
-  color: #000;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.nav .links {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.nav .links a {
-  color: #000;
-  text-decoration: none;
-  font-size: 1.5rem;
-  margin: 1rem;
-  transition: all 0.3s ease;
-}
-.nav .links a:hover {
-  color: #222;
+  padding: 20px 30px;
+  background-color: #1d446d;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 8vh;
+  margin-bottom: 10vh;
 }
 
+.logo h1 {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+}
+.links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.links a:hover {
+  color: #007bff;
+  transform: scale(1.05);
+}
+.links a.active {
+  color: #ff9800;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+  }
+  .links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .logo h1 {
+    font-size: 20px;
+  }
+}
 footer {
   display: flex;
   justify-content: center;
@@ -58,61 +83,172 @@ footer h1 {
 }
 
 .transactions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  color: #333;
+  padding: 30px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
 }
 .transactions .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 .transactions .header h1 {
-  font-size: 2.5rem;
-  color: #444;
+  font-size: 28px;
+  color: #2d3e50;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.transactions .content {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .transactions .content .balance {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: bold;
   margin-bottom: 20px;
-  margin-top: 3rem;
 }
 .transactions .content .balance h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #2c3e50;
+  margin: 0;
 }
 .transactions .content .history h2 {
-  font-size: 1.25rem;
-  margin-bottom: 10px;
-  color: #2c3e50;
+  font-size: 22px;
+  color: #2d3e50;
+  margin-bottom: 15px;
 }
 .transactions .content .history table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 .transactions .content .history table th, .transactions .content .history table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  padding: 12px;
   text-align: left;
+  font-size: 16px;
 }
 .transactions .content .history table th {
-  background-color: #f4f4f4;
+  background-color: #f0f0f0;
   font-weight: bold;
   color: #555;
 }
-.transactions .content .history table tr:nth-child(even) {
+.transactions .content .history table tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
-.transactions .content .history table tr:hover {
-  background-color: #f1f1f1;
+.transactions .content .history table tbody tr:hover {
+  background-color: #e0f7fa;
 }
-.transactions .content .history table td {
-  font-size: 1rem;
+
+@media (max-width: 768px) {
+  .transactions {
+    padding: 20px;
+  }
+  .header h1 {
+    font-size: 24px;
+  }
+  .content {
+    padding: 15px;
+  }
+  .balance {
+    font-size: 18px;
+  }
+  table {
+    font-size: 14px;
+  }
+  table th, table td {
+    padding: 10px;
+  }
+}
+.auth-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
   color: #333;
+}
+.auth-container .input-group {
+  margin-bottom: 15px;
+}
+.auth-container .input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  font-size: 14px;
+}
+.auth-container .input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+.auth-container .input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.auth-container .submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.auth-container .submit-btn:hover {
+  background-color: #0056b3;
+}
+.auth-container .toggle-form {
+  text-align: center;
+  margin-top: 15px;
+}
+.auth-container .toggle-form button {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.auth-container .toggle-form button:hover {
+  color: #0056b3;
+}
+
+@media (max-width: 500px) {
+  .auth-container {
+    width: 90%;
+    padding: 15px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .input-group input {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .submit-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .toggle-form button {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=styles.css.map */

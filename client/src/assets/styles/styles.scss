@@ -11,6 +11,8 @@ body {
 
     font-family: "Roboto", sans-serif;
 
+    background-color: #f5f5f5;
+
 }
 
 .content {
@@ -23,3 +25,4 @@ body {
 @import "./pages/_home";
 @import "./pages/_transactions";
 @import "./pages/_transfer";
+@import "./pages/auth";

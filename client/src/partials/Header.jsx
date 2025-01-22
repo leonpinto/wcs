@@ -20,6 +20,7 @@ export default function Header() {
           <Link to="/">Home</Link>
           <Link key="transfer" to={'/transfer'}>Transfer</Link>
           <Link key="transactions" to={'/transactions'}>Transactions</Link>
+          <Link key="auth" to={'/auth'}>Login/Sign Up</Link>
           
         </div>
 

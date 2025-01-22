@@ -1,51 +1,67 @@
+// Main styling for the nav container
 .nav {
-
     display: flex;
-    flex-direction: row;
-
     justify-content: space-between;
     align-items: center;
+    padding: 20px 30px;
+    background-color: #1d446d; // Dark background for the header
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-    width: 100%;
-    max-height: 10vh;
-
-    padding: 1rem;
-    
-    .logo {
-
-
-        h1 {
-            
-            color: #000;
-            font-size: 2rem;
-            font-weight: 700;
-
-        }
-
+    min-height: 8vh;
+    margin-bottom: 10vh;
+  }
+  
+  // Styling for the logo section
+  .logo h1 {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+    color: #fff; // White text for the logo
+  }
+  
+  // Links container styling
+  .links {
+    display: flex;
+    gap: 20px; // Space between links
+    font-size: 16px;
+  
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+  
+      &:hover {
+        color: #007bff; // Change to blue when hovered
+        transform: scale(1.05); // Slightly scale up the link on hover
+      }
+  
+      // Active link styling (when it's the current route)
+      &.active {
+        color: #ff9800; // Orange color for active link
+      }
     }
-
+  }
+  
+  // Mobile-responsive adjustments
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column; // Stack logo and links vertically
+      align-items: flex-start;
+      padding: 15px 20px;
+    }
+  
     .links {
-
-        display: flex;
-        flex-direction: row;
-
-        justify-content: space-between;
-        align-items: center;
-
-        a {
-
-            color: #000;
-            text-decoration: none;
-            font-size: 1.5rem;
-            margin: 1rem;
-            transition: all 0.3s ease;
-
-            &:hover {
-
-                color: #222;
-            }
-        }
-
+      flex-direction: column; // Stack the links vertically
+      gap: 10px;
+      width: 100%; // Full width to make links take up the entire row
     }
-
-}
+  
+    .logo h1 {
+      font-size: 20px; // Reduce font size on mobile
+    }
+  }
+  
