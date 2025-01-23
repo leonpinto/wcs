@@ -1,30 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`;
-
-const Form = styled.form`
-  display: grid;
-  gap: 10px;
-  width: 300px;
-`;
-
-const Input = styled.input`
-  padding: 8px;
-  font-size: 16px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-`;
+import '../assets/styles/pages/_addAccount.scss'; // Ensure you have this SCSS file created based on the earlier provided styles
 
 export default function AddAccount() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -35,15 +11,31 @@ export default function AddAccount() {
   };
 
   return (
-    <Container>
-      <h1>Add New Account</h1>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input {...register('name', { required: true })} placeholder="Name"/>
-        {errors.name && <span>Name is required</span>}
-        <Input {...register('email', {required: true})} placeholder="Email"/>
-        <Input {...register('phone', {required: true})} placeholder="Phone "/>
-        <Button type="submit">Add Account</Button>
-      </Form>
-    </Container>
+    <div className="add-account">
+      <div className="container">
+        <h1>Add New Account</h1>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+          <input 
+            {...register('name', { required: true })}
+            placeholder="Name"
+          />
+          {errors.name && <span>Name is required</span>}
+
+          <input 
+            {...register('email', { required: true })}
+            placeholder="Email"
+          />
+          {errors.email && <span>Email is required</span>}
+
+          <input 
+            {...register('phone', { required: true })}
+            placeholder="Phone"
+          />
+          {errors.phone && <span>Phone is required</span>}
+
+          <button type="submit">Add Account</button>
+        </form>
+      </div>
+    </div>
   );
 }

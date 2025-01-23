@@ -1,50 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import '../assets/styles/pages/_transfer.scss'; // Ensure you have this SCSS file created based on the earlier provided styles
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-`;
-
-const Form = styled.form`
-  display: grid;
-  gap: 10px;
-  width: 300px;
-`;
-
-const Title = styled.h1`
-  margin-bottom: 20px;
-`;
-
-const Input = styled.input`
-  padding: 8px;
-  font-size: 16px;
-`;
-
-const Button = styled.button`
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-`;
-
-const ActionButtons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-`;
-
-const Dropdown = styled.select`
-  padding: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
-`;
-
-export default function Transfer() {
+const Transfer = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [transactionType, setTransactionType] = useState('');
@@ -60,25 +19,45 @@ export default function Transfer() {
   };
 
   return (
-    <Container>
-      <Title>Electronic Transfer</Title>
-      <Dropdown onChange={handleTransactionChange} value={transactionType}>
-        <option value="">Select Transaction Type</option>
-        <option value="deposit">Deposit</option>
-        <option value="withdraw">Withdraw</option>
-      </Dropdown>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Input {...register('fromAccount', { required: true })} placeholder="From Account"/>
-        {errors.fromAccount && <span>This field is required</span>}
-        <Input {...register('toAccount', { required: true })} placeholder="To Account"/>
-        {errors.toAccount && <span>This field is required</span>}
-        <Input {...register('amount', { required: true })} placeholder="Amount"/>
-        {errors.amount && <span>This field is required</span>}
-        <Button type="submit">Transfer</Button>
-      </Form>
-      <ActionButtons>
-        <Button type="button" onClick={() => navigate('/add-account')}>Add New Account</Button>
-      </ActionButtons>
-    </Container>
+    <div className="transfer">
+      <div className="container">
+        <h1>Electronic Transfer</h1>
+        <select 
+          className="dropdown"
+          onChange={handleTransactionChange}
+          value={transactionType}
+        >
+          <option value="">Select Transaction Type</option>
+          <option value="deposit">Deposit</option>
+          <option value="withdraw">Withdraw</option>
+        </select>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+          <input 
+            {...register('fromAccount', { required: true })}
+            placeholder="From Account"
+          />
+          {errors.fromAccount && <span>This field is required</span>}
+
+          <input 
+            {...register('toAccount', { required: true })}
+            placeholder="To Account"
+          />
+          {errors.toAccount && <span>This field is required</span>}
+
+          <input 
+            {...register('amount', { required: true })}
+            placeholder="Amount"
+          />
+          {errors.amount && <span>This field is required</span>}
+
+          <button type="submit">Transfer</button>
+        </form>
+        <div className="action-buttons">
+          <button type="button" onClick={() => navigate('/add-account')}>Add New Account</button>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Transfer;
