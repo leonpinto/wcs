@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const cors = require('cors');
 // Import DB2 connection, authentication & deposit services
 const { getConnection } = require('./DB2Connection');
 const { registerUser, loginUser } = require('./AuthService');
@@ -12,6 +12,12 @@ const { eTransfer } = require('./eTransferService'); // Import eTransfer functio
 const { withdraw } = require('./withdrawService'); // Import withdraw function
 
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow frontend to access backend
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific request methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
+}));
 
 // **Test endpoint to check DB connection**
 app.get('/api/test-db', async (req, res) => {
@@ -81,7 +87,7 @@ app.post('/api/etransfer', async (req, res) => {
     res.status(result.success ? 200 : 400).json(result);
 });
 app.post('/api/withdraw', async (req, res) => {
-    const { userId, amount } = req.body;
+    const { usserId, amount } = req.body;
 
     if (!userId || amount === undefined) {
         return res.status(400).json({ success: false, message: "User ID and amount are required" });
