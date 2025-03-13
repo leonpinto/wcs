@@ -8,6 +8,8 @@ const { getConnection } = require('./DB2Connection');
 const { registerUser, loginUser } = require('./AuthService');
 const { deposit } = require('./DepositService');
 const { fetchAllUsers } = require('./fetchUsersService');
+const { eTransfer } = require('./eTransferService'); // Import eTransfer function
+const { withdraw } = require('./withdrawService'); // Import withdraw function
 
 app.use(express.json());
 
@@ -66,6 +68,29 @@ app.get('/api/users', async (req, res) => {
     const result = await fetchAllUsers();
     res.status(result.success ? 200 : 500).json(result);
 });
+
+// **E-Transfer API**
+app.post('/api/etransfer', async (req, res) => {
+    const { senderId, recipientId, amount } = req.body;
+
+    if (!senderId || !recipientId || amount === undefined) {
+        return res.status(400).json({ success: false, message: "Sender ID, recipient ID, and amount are required" });
+    }
+
+    const result = await eTransfer(senderId, recipientId, amount);
+    res.status(result.success ? 200 : 400).json(result);
+});
+app.post('/api/withdraw', async (req, res) => {
+    const { userId, amount } = req.body;
+
+    if (!userId || amount === undefined) {
+        return res.status(400).json({ success: false, message: "User ID and amount are required" });
+    }
+
+    const result = await withdraw(userId, amount);
+    res.status(result.success ? 200 : 400).json(result);
+});
+
 
 // **Start the Server**
 app.listen(PORT, () => {
