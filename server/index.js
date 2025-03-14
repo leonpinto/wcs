@@ -140,6 +140,12 @@ const { deposit } = require('./DepositService');
 const { withdraw } = require('./withdrawService');
 const { eTransfer } = require('./eTransferService');
 const { fetchAllUsers } = require('./fetchUsersService'); 
+// *** Import these at the top (not inside the route) ***
+const {
+    getTransactionsByEmail,
+    getAllTransactions
+  } = require('./Transactions.js'); // Make sure this path is correct
+  
 
 app.use(express.json());
 app.use(cors({
@@ -275,6 +281,31 @@ app.post('/api/etransfer', async (req, res) => {
     const result = await eTransfer(senderId, recipientId, amount);
     res.status(result.success ? 200 : 400).json(result);
 });
+
+
+// **Transactions API**  
+app.get('/api/transactions', async (req, res) => {
+    try {
+      // Optionally accept an email query param: ?email=someone@example.com
+      const { email } = req.query;
+  
+      if (email) {
+        const result = await getTransactionsByEmail(email);
+        // Return 200 if success, 404 if user not found
+        return res.status(result.success ? 200 : 404).json(result);
+      }
+  
+      // Otherwise, return all transactions
+      const result = await getAllTransactions();
+      return res.status(result.success ? 200 : 500).json(result);
+  
+    } catch (error) {
+      console.error("Error in /api/transactions route:", error);
+      return res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+  });
+  
+  
 
 /**
  * 📋 Fetch All Users API
