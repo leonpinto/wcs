@@ -97,6 +97,29 @@ app.post('/api/withdraw', async (req, res) => {
     res.status(result.success ? 200 : 400).json(result);
 });
 
+// app.get('/api/transactions', async (req, res) => {
+//     try {
+//         // Optionally accept an email query param
+//         const { email } = req.query;
+
+//         // If an email is provided, fetch transactions for that user
+//         if (email) {
+//             const result = await getTransactionsByEmail(email);
+//             // Return 200 if success, 404 if user not found
+//             return res.status(result.success ? 200 : 404).json(result);
+//         }
+
+//         // Otherwise, return all transactions
+//         const result = await getAllTransactions();
+//         return res.status(result.success ? 200 : 500).json(result);
+
+//     } catch (error) {
+//         console.error("Error in /api/transactionsroute:", error);
+//         return res.status(500).json({ success: false, message: "Server error", error: error.message });
+//     }
+// });
+
+
 
 // **Start the Server**
 app.listen(PORT, () => {
